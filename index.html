@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Signzy Assignment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body ng-app="signzy">
+    <div class="container text-center" id="calc" ng-controller="signzyCtrl">
+        <div class="row">
+            <div class="col-md-12 mar50">
+                <div class="calcBG col-md-3 col-md-offset-1 text-center">
+                    <div class="row" id="result">
+                        <form name="calc">
+                            <input type="text" class="screen text-right" name="result" id="calculation_value" readonly>
+                        </form>
+                    </div>
+                    <div class="row">
+
+                        <button id="allClear" type="button" class="btn btn-danger" ng-click="clearScreen();">AC</button>
+                        <button id="clear" type="button" class="btn btn-warning" ng-click="clearScreen()">CE</button>
+                        <button id="%" type="button" class="btn btn-info" ng-click="mark_key_stroke('%')">%</button>
+                        <button id="/" type="button" class="btn btn-info" ng-click="mark_key_stroke('/')">÷</button>
+                    </div>
+                    <div class="row">
+                        <button id="7" type="button" class="btn btn-info" ng-click="mark_key_stroke('7')">7</button>
+                        <button id="8" type="button" class="btn btn-info" ng-click="mark_key_stroke('8')">8</button>
+                        <button id="9" type="button" class="btn btn-info" ng-click="mark_key_stroke('9')">9</button>
+                        <button id="*" type="button" class="btn btn-info" ng-click="mark_key_stroke('*')">x</button>
+                    </div>
+                    <div class="row">
+                        <button id="4" type="button" class="btn btn-info" ng-click="mark_key_stroke('4')">4</button>
+                        <button id="5" type="button" class="btn btn-info" ng-click="mark_key_stroke('5')">5</button>
+                        <button id="6" type="button" class="btn btn-info" ng-click="mark_key_stroke('6')">6</button>
+                        <button id="-" type="button" class="btn btn-info" ng-click="mark_key_stroke('-')">-</button>
+                    </div>
+                    <div class="row">
+                        <button id="1" type="button" class="btn btn-info" ng-click="mark_key_stroke('1')">1</button>
+                        <button id="2" type="button" class="btn btn-info" ng-click="mark_key_stroke('2')">2</button>
+                        <button id="3" type="button" class="btn btn-info" ng-click="mark_key_stroke('3')">3</button>
+                        <button id="+" type="button" class="btn btn-info" ng-click="mark_key_stroke('+')">+</button>
+                    </div>
+                    <div class="row">
+                        <button id="0" type="button" class="btn btn-info" ng-click="mark_key_stroke('0')">0</button>
+                        <button id="." type="button" class="btn btn-info" ng-click="mark_key_stroke('.')">.</button>
+                        <button id="equals" type="button" class="btn btn-success" ng-click="calculate()">=</button>
+                        <button id="blank" type="button" class="btn btn-info">&nbsp;</button>
+                    </div>
+                </div>
+
+                <div class=" col-md-6 col-md-offset-2">
+                    <div class="row">
+                        <div class="panel-group">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">CALCULATION HISTORY</div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Input</th>
+                                            <th class="text-center">Result</th>
+                                            <th class="text-center">Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="(time, cal) in calculations" ng-class="{'success': $even, 'info': $odd}">
+                                            <td ng-bind="cal.input"></td>
+                                            <td ng-bind="cal.output"></td>
+                                            <td ng-bind="time*1000 | date :'medium'"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="scripts/utilities/utilities.js"></script>
+    <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/config/module.js"></script>
+    <script type="text/javascript" src="scripts/factories/localstorage.js"></script>
+    <script type="text/javascript" src="scripts/controllers/mainController.js"></script>
+</body>
+
+</html>
